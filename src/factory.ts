@@ -5,10 +5,9 @@ enum EventType {
 }
 
 abstract class TicketFactory {
+    public abstract createTicket(): Ticket; //FACTORY METHOD
 
-    public abstract createTicket(): Ticket;
-
-    public getTicket(): string {
+    public getTicketInformation(): string {
         const product = this.createTicket();
         return `Factory: The ticket's price is ${product.calculatePrice()}`;
     }
@@ -67,7 +66,7 @@ function clientCode(eventType: EventType) {
             creator = new PartyTicketFactory();
             break;
     }
-    return creator.getTicket();
+    return creator.getTicketInformation();
 }
 
 export { clientCode, EventType }
